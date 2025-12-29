@@ -18,37 +18,36 @@
 
   <h1>01-Notification-練習</h1>
   <hr>
-
   <div>
     <button class="btn btn-primary" onclick="showNotification()">通知</button>
   </div>
-
 
   <script>
 
     function showNotification() {
       // 檢查瀏覽器是否已授權通知
-      if (_________ === 'granted') {
+      if (Notification.permission === 'granted') {
         notification();
-      } else if (_________ === 'default') {
+      } else if (Notification.permission === 'default') {
         // 未授權，彈出授權視窗
-        _________.then(permission => {
+        Notification.requestPermission().then(permission => {
           if (permission === 'granted') {
             notification();
           }
         });
       } else {
         console.log('Notification denied!');
+        alert("你拒絕了，請手動重設")
       }
     }
 
     function notification() {
       const options = {
-        _________: '系統將於3分鐘後關閉維修',
-        _________: 'system',
-        _________: 'image/img01.jpg'
+        body: '系統將於3分鐘後關閉維修',
+        tag: 'system',
+        icon: 'image/img01.jpg'
       };
-      new _________('系統維護通知!', options);
+      new Notification('系統維護通知!', options);
     }
 
   </script>
