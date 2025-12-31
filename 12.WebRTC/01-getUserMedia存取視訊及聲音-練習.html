@@ -39,7 +39,7 @@
         </div>
         <div class="card-body">
           <!-- 建立canvas元素 -->
-
+          <canvas width="500" height="400"></canvas>
         </div>
       </div>
     </div>
@@ -56,18 +56,18 @@
       alert("不支援getUserMedia!");
     } else {
       //取得視訊鏡頭及音訊的媒體流
-      navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(media => {
-
-      });
-      //將媒體流設定到 <video> 元素
-
+      navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+        .then(media => {
+          //將媒體流設定到 <video> 元素
+          video.srcObject = media;
+        });
     }
 
     function screenshot() {
       canvas.width = video.videoWidth;
       canvas.height = video.videoHeight;
       //渲染繪圖物件後，將視訊內容(影像)繪製到canvas元素
-
+      canvas.getContext('2d').drawImage(video, 0, 0);
     }
 
   </script>
