@@ -19,13 +19,13 @@ builder.Services.AddSignalR();
 //允許跨域請求
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(builder =>
-    {
-        builder.WithOrigins("http://127.0.0.1:5500") // 指定允許的前端來源
-               .AllowAnyHeader()
-               .AllowAnyMethod()
-               .AllowCredentials(); // 允許憑證
-    });
+  options.AddDefaultPolicy(builder =>
+  {
+    builder.WithOrigins("http://127.0.0.1:5500") // 指定允許的前端來源
+      .AllowAnyHeader()
+      .AllowAnyMethod()
+      .AllowCredentials(); // 允許憑證
+  });
 });
 
 var app = builder.Build();
@@ -33,8 +33,8 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+  app.UseSwagger();
+  app.UseSwaggerUI();
 }
 
 
